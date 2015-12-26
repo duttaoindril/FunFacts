@@ -1,11 +1,6 @@
 package com.drillin.oindrildutta.funfacts;
 
 import android.os.AsyncTask;
-import android.util.Log;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -69,7 +64,7 @@ public class FactBook extends AsyncTask<Void, Void, String> {
             return "";
         }
     }
-
+    /*
     public String oldGetFact() {
         String fact = "O.o";
         try {
@@ -84,6 +79,7 @@ public class FactBook extends AsyncTask<Void, Void, String> {
             return fact;
         }
     }
+    */
 
     @Override
     protected String doInBackground(Void... params) {
