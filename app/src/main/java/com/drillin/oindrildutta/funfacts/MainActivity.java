@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         background = (RelativeLayout) findViewById(R.id.backg);
         factLabel = (TextView) findViewById(R.id.fact);
         showButton = (Button) findViewById(R.id.newfact);
-
+        if(savedInstanceState != null)
+            color = savedInstanceState.getInt("KEY_COLOR", color);
+        background.setBackgroundColor(color);
+        showButton.setTextColor(color);
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,39 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        background = (RelativeLayout) findViewById(R.id.backg);
-        showButton = (Button) findViewById(R.id.newfact);
-        background.setBackgroundColor(Color.parseColor("#ff9800"));
-        showButton.setTextColor(Color.parseColor("#ff9800"));
-        //Toast.makeText(this, "Opened", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("KEY_FACT", fact);
         outState.putInt("KEY_COLOR", color);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        fact = savedInstanceState.getString("KEY_FACT");
-        color = savedInstanceState.getInt("KEY_COLOR");
-
-        background = (RelativeLayout) findViewById(R.id.backg);
-        factLabel = (TextView) findViewById(R.id.fact);
-        showButton = (Button) findViewById(R.id.newfact);
-        factLabel.setText(fact);
-        background.setBackgroundColor(color);
-        showButton.setTextColor(color);
     }
 }
